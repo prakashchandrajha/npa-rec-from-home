@@ -59,7 +59,8 @@
               "buildTarget": "load-rec-app:build:production"
             },
             "development": {
-              "buildTarget": "load-rec-app:build:development"
+              "buildTarget": "load-rec-app:build:development",
+              "proxyConfig": "proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
