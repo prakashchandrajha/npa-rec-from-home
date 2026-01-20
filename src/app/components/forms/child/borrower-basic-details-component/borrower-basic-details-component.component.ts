@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, OnInit, OnDestroy } from '@angular/core';
-import { FormGroup, ReactiveFormsModule, Validators, FormBuilder } from '@angular/forms';
-import { BorrowerBasicDetails } from '../../../../interfaces/borrower-basic-details.interface';
+import { FormGroup, ReactiveFormsModule, Validators, FormBuilder, FormArray } from '@angular/forms';
+import { BorrowerBasicDetails, BoardMember } from '../../../../interfaces/borrower-basic-details.interface';
 
 /**
  * Borrower Basic Details Component
@@ -59,6 +59,48 @@ export class BorrowerBasicDetailsComponentComponent implements OnInit, OnDestroy
       lesseeName: [''],
       lesseeContactDetails: ['']
     });
+  }
+
+  /**
+   * Create a form group for a single board member
+   */
+  private createBoardMemberGroup(): FormGroup {
+    return this.fb.group({
+      name: [''],
+      designation: [''],
+      contactDetails: [''],
+      address: ['']
+    });
+  }
+
+  /**
+   * Get the board members FormArray
+   */
+  get boardMembersArray(): FormArray {
+    return this.basicDetailsForm.get('boardMembers') as FormArray;
+  }
+
+  /**
+   * Get a specific board member form group
+   */
+  getBoardMemberGroup(index: number): FormGroup {
+    return this.boardMembersArray.at(index) as FormGroup;
+  }
+
+  /**
+   * Add a new board member to the form array
+   */
+  addBoardMember(): void {
+    this.boardMembersArray.push(this.createBoardMemberGroup());
+  }
+
+  /**
+   * Remove a board member from the form array
+   */
+  removeBoardMember(index: number): void {
+    if (this.boardMembersArray.length > 0) {
+      this.boardMembersArray.removeAt(index);
+    }
   }
 
   /**

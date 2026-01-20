@@ -42,7 +42,7 @@
   </div>
 
   <!-- d. Contact Details - Board Members -->
-  <div class="form-section">
+  <div class="form-section" formArrayName="boardMembers">
     <h3>Contact Details - Board Members</h3>
     <table>
       <thead>
@@ -52,32 +52,25 @@
           <th>Designation</th>
           <th>Contact Details</th>
           <th>Address</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td><input type="text" placeholder="Name"></td>
-          <td><input type="text" placeholder="Designation"></td>
-          <td><input type="text" placeholder="Contact Details"></td>
-          <td><input type="text" placeholder="Address"></td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td><input type="text" placeholder="Name"></td>
-          <td><input type="text" placeholder="Designation"></td>
-          <td><input type="text" placeholder="Contact Details"></td>
-          <td><input type="text" placeholder="Address"></td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td><input type="text" placeholder="Name"></td>
-          <td><input type="text" placeholder="Designation"></td>
-          <td><input type="text" placeholder="Contact Details"></td>
-          <td><input type="text" placeholder="Address"></td>
-        </tr>
+        @for (member of boardMembersArray.controls; track member; let i = $index) {
+          <tr [formGroupName]="i">
+            <td>{{ i + 1 }}</td>
+            <td><input type="text" formControlName="name" placeholder="Name"></td>
+            <td><input type="text" formControlName="designation" placeholder="Designation"></td>
+            <td><input type="text" formControlName="contactDetails" placeholder="Contact Details"></td>
+            <td><input type="text" formControlName="address" placeholder="Address"></td>
+            <td>
+              <button type="button" (click)="removeBoardMember(i)">Remove</button>
+            </td>
+          </tr>
+        }
       </tbody>
     </table>
+    <button type="button" (click)="addBoardMember()">Add Board Member</button>
   </div>
 
   <!-- e. Registered Address, Corporate Office, Factory Address -->
