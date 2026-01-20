@@ -1,1 +1,56 @@
-<p>npa-main-form-component works!</p>
+<div class="faq-container">
+
+  <!-- Title Section -->
+  <div class="title-section">
+    <h1 class="title-main">Create NPA</h1>
+    <p class="title-description">
+      NPA Handover Document as per Office Order dated 15.12.2025
+    </p>
+  </div>
+
+  <!-- Accordion Wrapper -->
+  <div class="accordion-wrapper">
+
+    <!-- Accordion Items (DRY) -->
+    @for (section of sections; track section.title; let i = $index) {
+      <div class="accordion-item">
+        <details class="accordion-details">
+          <summary class="accordion-summary">
+            <div class="summary-content">
+              <div class="icon-wrapper">
+                <i class="accordion-icon"></i>
+              </div>
+              <span class="question-text">
+                {{ i + 1 }}. {{ section.title }}
+              </span>
+            </div>
+            <div class="badge"></div>
+          </summary>
+
+          <div class="accordion-content">
+            <div class="content-wrapper">
+              <div class="content-area">
+                <!-- Dynamic Child Component -->
+                <ng-container *ngComponentOutlet="section.component">
+                </ng-container>
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+    }
+
+  </div>
+
+  <!-- Submit Button (ONLY ONE) -->
+  <div class="submit-wrapper">
+  <button type="submit" class="submit-btn">
+    <span class="btn-content">
+      <i class="btn-icon"></i>
+      <span class="btn-text">Submit NPA Handover Form</span>
+    </span>
+    <div class="btn-hover-effect"></div>
+  </button>
+</div>
+
+</div>

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ComponentLoadService } from '../../../../services/component-load.service';
 
 @Component({
   selector: 'app-npa-main-form-component',
@@ -8,4 +9,9 @@ import { Component } from '@angular/core';
 })
 export class NpaMainFormComponentComponent {
 
+  sections: any[];
+
+  constructor(private componentLoadService: ComponentLoadService) {
+    this.sections = this.componentLoadService.getFormSections();
+  }
 }
