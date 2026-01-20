@@ -1,13 +1,162 @@
-@if (parentForm) {
-  <div [formGroup]="parentForm">
-    <div class="form-field">
-      <label for="borrowerName">Borrower Name</label>
-      <input
-        type="text"
-        id="borrowerName"
-        formControlName="borrowerName"
-        placeholder="Enter borrower name"
-      >
-    </div>
+<div [formGroup]="basicDetailsForm">
+  <!-- a. Name of Division and Regional Office -->
+  <div class="form-field">
+    <label for="divisionAndRegionalOffice">Name of Division and Regional Office</label>
+    <input
+      type="text"
+      id="divisionAndRegionalOffice"
+      formControlName="divisionAndRegionalOffice"
+      placeholder="Enter division and regional office"
+    >
   </div>
-}
+
+  <!-- b. Name of Account and date of classification as NPA -->
+  <div class="form-field">
+    <label for="accountName">Name of Account</label>
+    <input
+      type="text"
+      id="accountName"
+      formControlName="accountName"
+      placeholder="Enter account name"
+    >
+  </div>
+
+  <div class="form-field">
+    <label for="npaClassificationDate">Date of Classification as NPA</label>
+    <input
+      type="date"
+      id="npaClassificationDate"
+      formControlName="npaClassificationDate"
+    >
+  </div>
+
+  <!-- c. Business Activity of the society -->
+  <div class="form-field">
+    <label for="businessActivity">Business Activity of the Society</label>
+    <textarea
+      id="businessActivity"
+      formControlName="businessActivity"
+      placeholder="Enter business activity"
+      rows="3"
+    ></textarea>
+  </div>
+
+  <!-- d. Contact Details - Board Members -->
+  <div class="form-section">
+    <h3>Contact Details - Board Members</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Sr</th>
+          <th>Name of Chairman, President, VC, Directors and Board Members</th>
+          <th>Designation</th>
+          <th>Contact Details</th>
+          <th>Address</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td><input type="text" placeholder="Name"></td>
+          <td><input type="text" placeholder="Designation"></td>
+          <td><input type="text" placeholder="Contact Details"></td>
+          <td><input type="text" placeholder="Address"></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td><input type="text" placeholder="Name"></td>
+          <td><input type="text" placeholder="Designation"></td>
+          <td><input type="text" placeholder="Contact Details"></td>
+          <td><input type="text" placeholder="Address"></td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td><input type="text" placeholder="Name"></td>
+          <td><input type="text" placeholder="Designation"></td>
+          <td><input type="text" placeholder="Contact Details"></td>
+          <td><input type="text" placeholder="Address"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- e. Registered Address, Corporate Office, Factory Address -->
+  <div class="form-field">
+    <label for="registeredAddress">Registered Address of the Society</label>
+    <textarea
+      id="registeredAddress"
+      formControlName="registeredAddress"
+      placeholder="Enter registered address"
+      rows="2"
+    ></textarea>
+  </div>
+
+  <div class="form-field">
+    <label for="corporateOfficeAddress">Corporate Office of the Society</label>
+    <textarea
+      id="corporateOfficeAddress"
+      formControlName="corporateOfficeAddress"
+      placeholder="Enter corporate office address"
+      rows="2"
+    ></textarea>
+  </div>
+
+  <div class="form-field">
+    <label for="factoryAddress">Factory Address</label>
+    <textarea
+      id="factoryAddress"
+      formControlName="factoryAddress"
+      placeholder="Enter factory address"
+      rows="2"
+    ></textarea>
+  </div>
+
+  <!-- f. Factory/Mill running condition -->
+  <div class="form-field">
+    <label for="factoryRunningCondition">Whether Factory/Mill is in running condition</label>
+    <select id="factoryRunningCondition" formControlName="factoryRunningCondition">
+      <option value="">Select</option>
+      <option value="yes">Yes</option>
+      <option value="no">No</option>
+    </select>
+  </div>
+
+  <div class="form-field">
+    <label for="factoryNotRunningSince">If No, since when</label>
+    <input
+      type="date"
+      id="factoryNotRunningSince"
+      formControlName="factoryNotRunningSince"
+    >
+  </div>
+
+  <!-- g. Factory/Mill leased out/rented -->
+  <div class="form-field">
+    <label for="factoryLeasedOut">Whether Factory/Mill is leased out/rented</label>
+    <select id="factoryLeasedOut" formControlName="factoryLeasedOut">
+      <option value="">Select</option>
+      <option value="yes">Yes</option>
+      <option value="no">No</option>
+    </select>
+  </div>
+
+  <div class="form-field">
+    <label for="lesseeName">If Yes, name of Lessee</label>
+    <input
+      type="text"
+      id="lesseeName"
+      formControlName="lesseeName"
+      placeholder="Enter lessee name"
+    >
+  </div>
+
+  <div class="form-field">
+    <label for="lesseeContactDetails">Lessee Contact Details</label>
+    <input
+      type="text"
+      id="lesseeContactDetails"
+      formControlName="lesseeContactDetails"
+      placeholder="Enter lessee contact details"
+    >
+  </div>
+</div>

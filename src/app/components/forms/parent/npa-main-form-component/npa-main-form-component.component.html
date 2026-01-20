@@ -14,35 +14,37 @@
 
       <!-- Accordion Items (DRY) -->
       @for (section of sections; track section.title; let i = $index) {
-        <div class="accordion-item">
-          <details class="accordion-details">
-            <summary class="accordion-summary">
-              <div class="summary-content">
-                <div class="icon-wrapper">
-                  <i class="accordion-icon"></i>
-                </div>
-                <span class="question-text">
-                  {{ i + 1 }}. {{ section.title }}
-                </span>
+      <div class="accordion-item">
+        <details class="accordion-details">
+          <summary class="accordion-summary">
+            <div class="summary-content">
+              <div class="icon-wrapper">
+                <i class="accordion-icon"></i>
               </div>
-              <div class="badge"></div>
-            </summary>
+              <span class="question-text">
+                {{ i + 1 }}. {{ section.title }}
+              </span>
+            </div>
+            <div class="badge"></div>
+          </summary>
 
-            <div class="accordion-content">
-              <div class="content-wrapper">
-                <div class="content-area">
-                  <!-- Dynamic Child Component -->
-                  @if (section.title === 'Basic Details of Borrower') {
-                    <app-borrower-basic-details-component [parentForm]="basicDetailsFormGroup"></app-borrower-basic-details-component>
-                  } @else {
-                    <ng-container *ngComponentOutlet="section.component">
-                    </ng-container>
-                  }
-                </div>
+          <div class="accordion-content">
+            <div class="content-wrapper">
+              <div class="content-area">
+                <!-- Dynamic Child Component -->
+                @if (section.title === 'Basic Details of Borrower') {
+                <app-borrower-basic-details-component [parentForm]="npaForm" [groupName]="'basicDetails'"
+                  (validityChange)="onValidityChange($event)">
+                </app-borrower-basic-details-component>
+                } @else {
+                <ng-container *ngComponentOutlet="section.component">
+                </ng-container>
+                }
               </div>
             </div>
-          </details>
-        </div>
+          </div>
+        </details>
+      </div>
       }
 
       <!-- Submit Button (ONLY ONE) -->
