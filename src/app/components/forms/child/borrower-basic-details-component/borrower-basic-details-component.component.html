@@ -1,1 +1,13 @@
-<p>borrower-basic-details-component works!</p>
+@if (parentForm) {
+  <div [formGroup]="parentForm">
+    <div class="form-field">
+      <label for="borrowerName">Borrower Name</label>
+      <input
+        type="text"
+        id="borrowerName"
+        formControlName="borrowerName"
+        placeholder="Enter borrower name"
+      >
+    </div>
+  </div>
+}

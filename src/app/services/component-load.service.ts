@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { BorrowerBasicDetailsComponentComponent } from '../components/forms/child/borrower-basic-details-component/borrower-basic-details-component.component';
 import { BorrowerBoardMembersComponent2Component } from '../components/forms/child/borrower-board-members-component-2/borrower-board-members-component-2.component';
 import { FacilitySanctionDetailsComponent3Component } from '../components/forms/child/facility-sanction-details-component-3/facility-sanction-details-component-3.component';
@@ -17,7 +18,14 @@ import { DivisionRemarksComponent12Component } from '../components/forms/child/d
 })
 export class ComponentLoadService {
 
+  private borrowerNameSubject = new BehaviorSubject<string>('');
+  borrowerName$ = this.borrowerNameSubject.asObservable();
+
   constructor() { }
+
+  updateBorrowerName(name: string) {
+    this.borrowerNameSubject.next(name);
+  }
 
   getFormSections() {
     return [
